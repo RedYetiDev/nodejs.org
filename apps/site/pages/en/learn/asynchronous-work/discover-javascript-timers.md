@@ -1,7 +1,7 @@
 ---
 title: Discover JavaScript Timers
 layout: learn
-authors: flaviocopes, MylesBorins, LaRuaNa, amiller-gh, ahmadawais, ovflowd
+authors: flaviocopes, MylesBorins, LaRuaNa, amiller-gh, ahmadawais, ovflowd, RedYetiDev
 ---
 
 # Discover JavaScript Timers
@@ -133,3 +133,18 @@ to achieve this scenario:
 `setTimeout` and `setInterval` are available in Node.js, through the [Timers module](https://nodejs.org/api/timers.html).
 
 Node.js also provides `setImmediate()`, which is equivalent to using `setTimeout(() => {}, 0)`, mostly used to work with the Node.js Event Loop.
+
+## Promisified Timers
+
+In Node.js, you can also use promisified versions of these timers, which are particularly useful in modern JavaScript where `async/await` is common. The `timers/promises` module provides this functionality.
+
+```javascript
+const { setTimeout } = require('node:timers/promises');
+
+async function delayedMessage() {
+  await setTimeout(1000);
+  console.log('This message is shown after 1 second.');
+}
+
+delayedMessage();
+```
